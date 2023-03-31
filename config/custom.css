@@ -1,0 +1,136 @@
+:root {
+  /* colors */
+  --sergi-indigo: #6366f1;
+  --sergi-yellow: #eab308;
+  --sergi-sky: #0ea5e9;
+  --sergi-green: #15803d;
+  --sergi-lime: #84cc16;
+  --sergi-orange: #f97316;
+  --sergi-pink: #ec4899;
+
+  /* lighter colors */
+  --sergi-red-light: #f87171;
+  --sergi-yellow-light: #facc15;
+  --sergi-blue-light: #60a5fa;
+
+  /* tasks colors */
+  --sergi-task-done: var(--sergi-green);
+  --sergi-task-doing: var(--sergi-sky);
+  --sergi-task-todo: var(--sergi-lime);
+  --sergi-task-later: var(--sergi-orange);
+  --sergi-task-waiting: var(--sergi-pink);
+
+  /* priority colors */
+  --sergi-priority-a: var(--sergi-red-light);
+  --sergi-priority-b: var(--sergi-yellow-light);
+  --sergi-priority-c: var(--sergi-blue-light);
+}
+
+/* Checkboxes */
+
+.content .form-checkbox {
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  opacity: 0.7;
+}
+
+.content .form-checkbox:hover {
+  opacity: 0.85;
+}
+
+.content .later .form-checkbox {
+  background-color: var(--sergi-task-later);
+}
+
+.content .todo .form-checkbox {
+  background-color: var(--sergi-task-todo);
+}
+
+.content .waiting .form-checkbox {
+  background-color: var(--sergi-task-waiting);
+}
+
+.content .doing .form-checkbox {
+  background-color: var(--sergi-task-doing);
+}
+
+.content .done .form-checkbox {
+  background-color: var(--sergi-task-done);
+  opacity: 0.85;
+}
+
+.content .done .form-checkbox:hover {
+  opacity: 1;
+}
+
+/* tasks status */
+
+.block-marker.LATER {
+  color: var(--sergi-task-later);
+}
+
+.block-marker.TODO {
+  color: var(--sergi-task-todo);
+}
+
+.block-marker.waiting {
+  color: var(--sergi-task-waiting);
+}
+
+.block-marker.DOING {
+  color: var(--sergi-task-doing);
+}
+
+/* tasks priority recolor */
+
+.priority {
+  font-size: 0;
+  visibility: hidden;
+}
+
+a[priority]::before,
+.priority::before {
+  position: relative;
+  top: -0.39rem;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  height: 1.2rem;
+  width: 1.2rem;
+  vertical-align: middle;
+  -webkit-mask: var(--sergi-priority-bg) no-repeat 50% 50%;
+  mask: var(--sergi-priority-bg) no-repeat 50% 50%;
+}
+
+a[priority='A']::before,
+.priority[href='#/page/A']::before {
+  --sergi-priority-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'%3e%3cpath stroke='none' d='M0 0h24v24H0z'/%3e%3cpath d='M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0M12 8l-4 4M12 8v8M16 12l-4-4'/%3e%3c/svg%3e");
+  background-color: var(--sergi-priority-a);
+}
+
+a[priority='B']::before,
+.priority[href='#/page/B']::before {
+  background-color: var(--sergi-priority-b);
+  --sergi-priority-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'%3e%3cpath stroke='none' d='M0 0h24v24H0z'/%3e%3cpath d='M11 12a1 1 0 1 0 2 0 1 1 0 1 0-2 0'/%3e%3cpath d='M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0'/%3e%3c/svg%3e");
+}
+
+a[priority='C']::before,
+.priority[href='#/page/C']::before {
+  background-color: var(--sergi-priority-c);
+  --sergi-priority-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'%3e%3cpath stroke='none' d='M0 0h24v24H0z'/%3e%3cpath d='M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0M8 12l4 4M12 8v8M16 12l-4 4'/%3e%3c/svg%3e");
+}
+
+a.tooltip-priority::before {
+  position: relative;
+  top: -0.15rem;
+  left: -0.2rem;
+  height: 1.2rem;
+  width: 1.2rem;
+  display: inline-block;
+}
+
+/*
+Special mention to:
+- https://github.com/yoyurec/logseq-awesome-content
+- https://tailwindcss.com/docs/customizing-colors
+*/
